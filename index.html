@@ -26,7 +26,9 @@
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; color: var(--dark); overflow-x: hidden; }
+body { font-family: 'DM Sans', sans-serif; color: var(--dark); overflow-x: hidden;
+  padding: 0; margin: 0;
+}
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
@@ -69,11 +71,7 @@ a { text-decoration: none; color: inherit; }
 .hamburger span { display: block; width: 26px; height: 2px; background: var(--dark); transition: all 0.3s; }
 
 /* ===== HERO SECTION ===== */
-#hero {
-  min-height: 100vh; padding-top: 72px;
-  background: linear-gradient(135deg, #FAFAFA 0%, #F5F0EB 100%);
-  display: flex; align-items: center;
-}
+
 .hero-inner {
   max-width: 1280px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr;
@@ -193,10 +191,19 @@ a { text-decoration: none; color: inherit; }
 .ucard:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.10); transform: translateY(-4px); border-color: transparent; }
 .ucard:hover::before { transform: scaleX(1); }
 .ucard-icon {
-  width: 52px; height: 52px; border-radius: 12px;
-  background: linear-gradient(135deg, #FFF1F0, #FFDADA);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px; margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ucard-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
 }
 .ucard h3 {
   font-size: 17px; font-weight: 700; color: var(--black);
@@ -242,24 +249,46 @@ a { text-decoration: none; color: inherit; }
 }
 .pcard:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.12); transform: translateY(-4px); }
 .pcard-img {
-  width: 100%; height: 180px;
-  background: linear-gradient(135deg, #F5F5F5 0%, #EBEBEB 100%);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
+  width: 100%;
+  background: #FFF3E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  border-bottom: 1px solid #FFE0C0;
+  box-sizing: border-box;
+  /* default height — overridden per-tab below */
+  height: 180px;
+  padding: 10px;
+}
+.pcard-img img {
+  /* To swap: change src="filename.webp" on the img tag */
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+/* Inside-body pens (P images) — landscape ~670×200 */
+#tab-inside .pcard-img {
+  height: 160px;
+  padding: 8px 12px;
+}
+/* Foiled pens (B images) — portrait ~230×320 */
+#tab-foiled .pcard-img {
+  height: 300px;
+  padding: 12px;
+}
+/* Pen stands (PA images) — ultra-flat ~500×50 */
+#tab-stands .pcard-img {
+  height: 110px;
+  padding: 14px 16px;
 }
 .pcard-img img {
   width: 100%; height: 100%; object-fit: cover;
 }
-.pcard-img-placeholder {
-  width: 100%; height: 100%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #F8F0F0 0%, #EDE0E0 100%);
-}
-.pcard-img-placeholder svg { opacity: 0.3; }
-.pcard-img-placeholder span {
-  font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.08em; text-transform: uppercase;
-}
+
 .pcard-body { padding: 18px 16px; }
 .pcard-name {
   font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 6px;
@@ -279,86 +308,6 @@ a { text-decoration: none; color: inherit; }
   font-size: 15px; padding: 12px 32px;
   background: #FFF1F0;
 }
-
-/* ===== INNOVATION / TECHNOLOGY SECTION ===== */
-#innovation {
-  /* Red filled + gold/yellow combo */
-  background: linear-gradient(135deg, var(--red) 0%, #8B0000 40%, #C8800A 100%);
-  padding: 100px 48px;
-  position: relative; overflow: hidden;
-}
-#innovation::before {
-  content: '';
-  position: absolute; top: -80px; right: -80px;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(245,200,66,0.25) 0%, transparent 70%);
-  pointer-events: none;
-}
-#innovation::after {
-  content: '';
-  position: absolute; bottom: -60px; left: -60px;
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(255,220,80,0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-.innovation-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-.innovation-header { text-align: center; margin-bottom: 72px; }
-.innovation-header .sec-label { color: var(--gold-light); }
-.innovation-header .sec-title { color: #fff; }
-.innovation-header .sec-sub { color: rgba(255,255,255,0.80); margin-top: 16px; }
-.tech-steps {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-  background: rgba(255,255,255,0.06);
-  border-radius: 20px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.15);
-}
-.tech-step {
-  padding: 40px 28px; text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.12);
-  position: relative;
-}
-.tech-step:last-child { border-right: none; }
-.tech-step-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 56px; font-weight: 900;
-  color: rgba(255,255,255,0.08); line-height: 1;
-  position: absolute; top: 16px; right: 16px;
-}
-.tech-step-icon {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 20px; font-size: 28px;
-  box-shadow: 0 8px 24px rgba(212,160,23,0.4);
-}
-.tech-step h3 {
-  font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.4;
-}
-.tech-step p { font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.6; }
-
-.features-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px;
-}
-.feat-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 14px; padding: 28px 24px;
-  backdrop-filter: blur(4px);
-  transition: all 0.25s;
-}
-.feat-card:hover {
-  background: rgba(255,255,255,0.14);
-  transform: translateY(-3px);
-}
-.feat-card-top {
-  display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
-}
-.feat-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--gold-light); flex-shrink: 0;
-}
-.feat-card h4 { font-size: 16px; font-weight: 700; color: var(--gold-light); }
-.feat-card p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.65; }
 
 /* ===== ABOUT SECTION ===== */
 #about {
@@ -404,17 +353,32 @@ a { text-decoration: none; color: inherit; }
 .clients-inner { max-width: 1200px; margin: 0 auto; }
 .clients-header { text-align: center; margin-bottom: 52px; }
 .clients-logos {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
 }
 .client-logo {
-  background: #fff; border-radius: 10px;
+  background: #fff;
+  border-radius: 10px;
   border: 1.5px solid #EEE;
-  padding: 18px 16px;
-  display: flex; align-items: center; justify-content: center;
-  min-height: 72px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   transition: all 0.2s;
 }
-.client-logo:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); border-color: var(--red); }
+.client-logo img {
+  /* To swap: change src="Logo_X.webp" */
+  max-width: 100%;
+  max-height: 70px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
 .client-logo span {
   font-size: 13px; font-weight: 700; color: var(--dark); text-align: center; line-height: 1.4;
 }
@@ -543,13 +507,7 @@ a { text-decoration: none; color: inherit; }
   transition: all 0.25s;
 }
 .foiled-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.10); transform: translateY(-3px); }
-.foiled-img {
-  width: 100%; height: 160px;
-  background: linear-gradient(135deg, #F5F5F5, #E8E8E8);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 8px; border-bottom: 1px solid #F0F0F0;
-}
-.foiled-img span { font-size: 11px; font-weight: 600; color: #BBB; letter-spacing: 0.08em; text-transform: uppercase; }
+
 .foiled-body { padding: 16px; }
 .foiled-name { font-size: 15px; font-weight: 700; color: var(--black); }
 
@@ -611,23 +569,30 @@ footer img { height: 40px; opacity: 0.8; }
   .hero-sub { margin: 0 auto; }
   .about-inner { grid-template-columns: 1fr; }
   .contact-inner { grid-template-columns: 1fr; }
-  .tech-steps { grid-template-columns: repeat(2, 1fr); }
+  
   .product-grid { grid-template-columns: repeat(2, 1fr); }
+  #tab-stands.product-grid { grid-template-columns: repeat(2, 1fr); }
   .unique-grid { grid-template-columns: repeat(2, 1fr); }
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  
 }
 @media (max-width: 768px) {
-  #header { padding: 0 24px; }
+  #header { padding: 0 24px;
+  #tab-stands.product-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
   .header-nav { display: none; }
   .header-cta { display: none; }
   .hamburger { display: flex; }
-  #hero, #unique, #products, #innovation, #about, #clients, #order, #contact, #foiled { padding: 80px 24px; }
+  #hero, #unique, #products, #about, #clients, #order, #contact, #foiled { padding: 80px 24px; }
   #products::before { top: 20px; left: 20px; right: 20px; bottom: 20px; }
-  .tech-steps { grid-template-columns: 1fr; }
+  
   .product-grid { grid-template-columns: repeat(2, 1fr); }
+  #tab-stands.product-grid { grid-template-columns: repeat(2, 1fr); }
   .unique-grid { grid-template-columns: 1fr; }
-  .features-grid { grid-template-columns: 1fr; }
+  
   .clients-logos { grid-template-columns: repeat(3, 1fr); }
+  #tab-inside .pcard-img { height: 130px; }
+  #tab-foiled .pcard-img { height: 260px; }
+  #tab-stands .pcard-img { height: 90px; }
   .order-steps { grid-template-columns: 1fr; }
   .order-steps::before { display: none; }
   .form-row { grid-template-columns: 1fr; }
@@ -651,13 +616,15 @@ footer img { height: 40px; opacity: 0.8; }
   </button>
 </header>
 
-<section id="hero" style="margin-top:72px;width:100%;overflow:hidden;line-height:0;padding:0;">
-  <video autoplay muted loop playsinline
-    style="width:100%;height:calc(100vh - 72px);object-fit:cover;display:block;">
+<section id="hero" style="position:fixed;top:0;left:0;width:100%;height:100vh;z-index:-1;overflow:hidden;padding:0;margin:0;">
+  <video autoplay muted loop playsinline id="heroVideo"
+    style="width:100%;height:100%;object-fit:cover;display:block;">
     <source src="VV1.webm" type="video/webm">
     <source src="pen_video.mp4" type="video/mp4">
   </video>
 </section>
+<!-- hero spacer: pushes content below full-screen video -->
+<div id="hero-spacer" style="height:100vh;"></div>
 
 <!-- ===== WHAT'S UNIQUE ===== -->
 <section id="unique">
@@ -667,52 +634,98 @@ footer img { height: 40px; opacity: 0.8; }
       <h2 class="sec-title">What's Unique about <em>Ridleys Custom</em><br>Promotional Pens?</h2>
       <p class="sec-sub text-center" style="margin:16px auto 0;">Nine reasons why India's top brands choose Ridleys for their promotional pen branding.</p>
     </div>
-    <div class="unique-grid">
+        <div class="unique-grid">
+
+      <!-- CARD 1 — Unique Technology — I1.webp -->
       <div class="ucard fade-up stagger-1">
-        <div class="ucard-icon">🔬</div>
-        <h3>Unique Inside-Body Technology</h3>
-        <p>First-of-its-kind inside body printing. Your branding can never fade or be scratched out — sealed permanently inside the transparent barrel.</p>
+        <div class="ucard-icon">
+          <!-- ICON 1: Replace src="I1.webp" with any image path to swap -->
+          <img src="I1.webp" alt="Unique Technology icon">
+        </div>
+        <h3>Unique Technology</h3>
+        <p>First-of-its-type inside body printing. Can never fade or be scratched out.</p>
       </div>
+
+      <!-- CARD 2 — Sharp & Magnified Effect — I2.webp -->
       <div class="ucard fade-up stagger-2">
-        <div class="ucard-icon">🎨</div>
-        <h3>Precision Colour Printing</h3>
-        <p>High-definition film printing ensures your brand colours and logo are perfectly replicated with zero distortion on every single unit.</p>
-      </div>
-      <div class="ucard fade-up stagger-3">
-        <div class="ucard-icon">✅</div>
-        <h3>Exact Brand Colour Match</h3>
-        <p>Pen components are customised to match the exact Pantone or CMYK colours of your brand guidelines — 100% compliance guaranteed.</p>
-      </div>
-      <div class="ucard fade-up stagger-1">
-        <div class="ucard-icon">📸</div>
-        <h3>High-Resolution Photo Printing</h3>
-        <p>Go beyond logos. Place vibrant, high-resolution photographs directly on the branding cylinder — your product, team, or campaign imagery.</p>
-      </div>
-      <div class="ucard fade-up stagger-2">
-        <div class="ucard-icon">🔍</div>
+        <div class="ucard-icon">
+          <!-- ICON 2: Replace src="I2.webp" with any image path to swap -->
+          <img src="I2.webp" alt="Sharp and Magnified Effect icon">
+        </div>
         <h3>Sharp &amp; Magnified Effect</h3>
-        <p>The specially designed transparent body acts as a lens, magnifying your branding to create a crisp, sharp, eye-catching visual impact.</p>
+        <p>Your brand logo and company details are photo printed to provide exact colour matches &amp; sharp lettering. Being inside the specially designed transparent body provides a magnified effect.</p>
       </div>
+
+      <!-- CARD 3 — Tamper-Proof Sealing — I3.webp -->
       <div class="ucard fade-up stagger-3">
-        <div class="ucard-icon">🔒</div>
+        <div class="ucard-icon">
+          <!-- ICON 3: Replace src="I3.webp" with any image path to swap -->
+          <img src="I3.webp" alt="Tamper-Proof Sealing icon">
+        </div>
         <h3>Tamper-Proof Sealing</h3>
-        <p>The branded photo cylinder inside is permanently sealed with a tamper-proof stopper. Your branding is indestructible for the life of the pen.</p>
+        <p>The branded photo cylinder inside cannot be removed.</p>
       </div>
+
+      <!-- CARD 4 — Special ULV Ink — I4.webp -->
       <div class="ucard fade-up stagger-1">
-        <div class="ucard-icon">🇩🇪</div>
-        <h3>Special ULV Ink — German Technology</h3>
-        <p>Superior quality ink ensures smooth &amp; long-lasting writing — an average of 50–60 full-scape pages (800–1000 metres of continuous writing).</p>
+        <div class="ucard-icon">
+          <!-- ICON 4: Replace src="I4.webp" with any image path to swap -->
+          <img src="I4.webp" alt="Special ULV Ink icon">
+        </div>
+        <h3>Special ULV Ink with German Technology</h3>
+        <p>The superior quality ink ensures smooth &amp; long-lasting writing — avg. of 50–60 full scape paper (800–1000m).</p>
       </div>
+
+      <!-- CARD 5 — Superior Quality Pens — I5.webp -->
       <div class="ucard fade-up stagger-2">
-        <div class="ucard-icon">🏆</div>
+        <div class="ucard-icon">
+          <!-- ICON 5: Replace src="I5.webp" with any image path to swap -->
+          <img src="I5.webp" alt="Superior Quality Pens icon">
+        </div>
         <h3>Superior Quality Pens</h3>
-        <p>Our pens have been exported to Europe, the Middle East, Japan, and many other countries for over 25 years — international quality standards.</p>
+        <p>Our pens are being exported to Europe, Middle East, Japan and many other countries for over 25 years.</p>
       </div>
+
+      <!-- CARD 6 — Professional Expertise — I6.webp -->
       <div class="ucard fade-up stagger-3">
-        <div class="ucard-icon">💰</div>
-        <h3>Budget Friendly</h3>
-        <p>Premium inside-body branding at a price that makes sense for bulk promotional orders. Low MOQ of just 1000 units. Maximum impact, minimum spend.</p>
+        <div class="ucard-icon">
+          <!-- ICON 6: Replace src="I6.webp" with any image path to swap -->
+          <img src="I6.webp" alt="Professional Expertise icon">
+        </div>
+        <h3>Professional Expertise</h3>
+        <p>We are Quality pen manufacturers with over 30-years of global experience.</p>
       </div>
+
+      <!-- CARD 7 — Exact Brand Color Matching — I7.webp -->
+      <div class="ucard fade-up stagger-1">
+        <div class="ucard-icon">
+          <!-- ICON 7: Replace src="I7.webp" with any image path to swap -->
+          <img src="I7.webp" alt="Exact Brand Color Matching icon">
+        </div>
+        <h3>Exact Brand Color Matching</h3>
+        <p>The colored components of the pen can be customized to match the exact colors of your logo, ensuring 100% compliance with your brand guidelines.</p>
+      </div>
+
+      <!-- CARD 8 — Precision Film Printing — I8.webp -->
+      <div class="ucard fade-up stagger-2">
+        <div class="ucard-icon">
+          <!-- ICON 8: Replace src="I8.webp" with any image path to swap -->
+          <img src="I8.webp" alt="Precision Film Printing icon">
+        </div>
+        <h3>Precision Film Printing</h3>
+        <p>The internal branding cylinder utilizes high-definition film printing to ensure your brand colors and logo are perfectly replicated with zero distortion.</p>
+      </div>
+
+      <!-- CARD 9 — High-Resolution Photo Integration — I9.webp -->
+      <div class="ucard fade-up stagger-3">
+        <div class="ucard-icon">
+          <!-- ICON 9: Replace src="I9.webp" with any image path to swap -->
+          <img src="I9.webp" alt="High-Resolution Photo Integration icon">
+        </div>
+        <h3>High-Resolution Photo Integration</h3>
+        <p>Go beyond simple logos. Our film printing technology allows you to place vibrant, high-res photographs directly onto the branding cylinder.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -732,346 +745,218 @@ footer img { height: 40px; opacity: 0.8; }
       <button class="ptab" onclick="switchTab('stands')">Pen Stands &amp; Folders</button>
     </div>
 
-    <!-- INSIDE BODY PENS -->
+    <!-- ═══ TAB 1: INSIDE BODY PENS ═══ -->
     <div id="tab-inside" class="product-grid">
+
       <div class="pcard fade-up stagger-1">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual MaxView EMPO pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>MaxView EMPO</span>
-          </div>
+          <!-- IMAGE P1: swap src to change this pen photo -->
+          <img src="P1.webp" alt="MaxView EMPO pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">MaxView EMPO</div>
-          <div class="pcard-desc">Capped pen with vibrant transparent body. Full 360° inside-body branding with photo, logo, address &amp; image panel.</div>
           <span class="pcard-tag">Inside Body • Tamper Proof</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-2">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual MaxView D-LITE pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>MaxView D-LITE</span>
-          </div>
+          <!-- IMAGE P2: swap src to change this pen photo -->
+          <img src="P2.webp" alt="MaxView D-LITE pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">MaxView D-LITE</div>
-          <div class="pcard-desc">Elegant purple-toned pen with matching colour components. Sleek professional look ideal for corporate gifting.</div>
           <span class="pcard-tag">Inside Body • Tamper Proof</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-3">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual MaxView XR pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>MaxView XR</span>
-          </div>
+          <!-- IMAGE P3: swap src to change this pen photo -->
+          <img src="P3.webp" alt="MaxView XR pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">MaxView XR</div>
-          <div class="pcard-desc">Pastel pink series with a slim ergonomic barrel. Ideal for healthcare, beauty &amp; lifestyle brands seeking a softer identity.</div>
           <span class="pcard-tag">Inside Body • Tamper Proof</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-4">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual MaxView DURO CLICK pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>MaxView DURO CLICK</span>
-          </div>
+          <!-- IMAGE P4: swap src to change this pen photo -->
+          <img src="P4.webp" alt="MaxView DURO CLICK pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">MaxView DURO CLICK</div>
-          <div class="pcard-desc">Click-action retractable pen in teal. Robust textured grip. Perfect for field sales teams &amp; frequent writers.</div>
           <span class="pcard-tag">Click Pen • Tamper Proof</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-1">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual MaxView JOY pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>MaxView JOY</span>
-          </div>
+          <!-- IMAGE P5: swap src to change this pen photo -->
+          <img src="P5.webp" alt="MaxView JOY pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">MaxView JOY</div>
-          <div class="pcard-desc">Teal and transparent combination. Minimalist branding zone with logo and web address. Great for retail brands.</div>
           <span class="pcard-tag">Inside Body • Tamper Proof</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-2">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual MaxView JETFAST pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>MaxView JETFAST</span>
-          </div>
+          <!-- IMAGE P6: swap src to change this pen photo -->
+          <img src="P6.webp" alt="MaxView JETFAST pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">MaxView JETFAST</div>
-          <div class="pcard-desc">Sky blue series with full branding panel. Suitable for education, banking &amp; finance companies wanting vibrant visibility.</div>
           <span class="pcard-tag">Inside Body • Tamper Proof</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-3">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual MaxView YOYO pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>MaxView YOYO</span>
-          </div>
+          <!-- IMAGE P7: swap src to change this pen photo -->
+          <img src="P7.webp" alt="MaxView YOYO pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">MaxView YOYO</div>
-          <div class="pcard-desc">Green accented click pen with wide branding panel. Bold and energetic design suited to FMCG &amp; manufacturing brands.</div>
           <span class="pcard-tag">Click Pen • Tamper Proof</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-4">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual MaxView N-JOY pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>MaxView N-JOY</span>
-          </div>
+          <!-- IMAGE P8: swap src to change this pen photo -->
+          <img src="P8.webp" alt="MaxView N-JOY pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">MaxView N-JOY</div>
-          <div class="pcard-desc">Orange body with full branding panel. Warm, attention-grabbing colour. Ideal for events, hospitality &amp; promotions.</div>
           <span class="pcard-tag">Inside Body • Tamper Proof</span>
         </div>
       </div>
+
     </div>
 
-    <!-- FOILED PENS (hidden by default) -->
+    <!-- ═══ TAB 2: FOILED & STAMPED PENS ═══ -->
     <div id="tab-foiled" class="product-grid" style="display:none;">
+
       <div class="pcard fade-up stagger-1">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual Arrow foiled pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>Arrow</span>
-          </div>
+          <!-- IMAGE B1: swap src to change this pen photo -->
+          <img src="B1.webp" alt="Arrow foiled pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">Arrow</div>
-          <div class="pcard-desc">Classic capped pen in green with foil-stamped brand name. Timeless and professional for corporate distribution.</div>
-          <span class="pcard-tag">Foiled &amp; Stamped</span>
+          <span class="pcard-tag">FOILED | STAMPED</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-2">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual Hi Grade foiled pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>Hi Grade</span>
-          </div>
+          <!-- IMAGE B2: swap src to change this pen photo -->
+          <img src="B2.webp" alt="Hi Grade foiled pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">Hi Grade</div>
-          <div class="pcard-desc">Sleek gunmetal grey with gold foil stamping. A premium look at a promotional price. Perfect for luxury brands.</div>
-          <span class="pcard-tag">Foiled &amp; Stamped</span>
+          <span class="pcard-tag">FOILED | STAMPED</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-3">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual Yesmate foiled pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>Yesmate</span>
-          </div>
+          <!-- IMAGE B3: swap src to change this pen photo -->
+          <img src="B3.webp" alt="Yesmate foiled pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">Yesmate</div>
-          <div class="pcard-desc">Dual-tone blue and green combo. High visibility branding strip. Great for schools, NGOs &amp; government organisations.</div>
-          <span class="pcard-tag">Foiled &amp; Stamped</span>
+          <span class="pcard-tag">FOILED | STAMPED</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-4">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual Delite foiled pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>Delite</span>
-          </div>
+          <!-- IMAGE B4: swap src to change this pen photo -->
+          <img src="B4.webp" alt="Delite foiled pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">Delite</div>
-          <div class="pcard-desc">Royal blue body with contrasting white foil. Clean and striking. Ideal for hospitals, clinics &amp; pharmaceutical companies.</div>
-          <span class="pcard-tag">Foiled &amp; Stamped</span>
+          <span class="pcard-tag">FOILED | STAMPED</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-1">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual N-Joy Golden pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>N-Joy Golden</span>
-          </div>
+          <!-- IMAGE B5: swap src to change this pen photo -->
+          <img src="B5.webp" alt="N-Joy Golden foiled pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">N-Joy (Golden Colour)</div>
-          <div class="pcard-desc">Premium black &amp; gold combination. Rich metallic finish with stamped branding. The ultimate luxury promotional pen.</div>
-          <span class="pcard-tag">Gold Foil Stamped</span>
+          <span class="pcard-tag">FOILED | STAMPED</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-2">
         <div class="pcard-img">
-          <!-- PLACEHOLDER: Replace with actual Joy foiled pen image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>Joy</span>
-          </div>
+          <!-- IMAGE B6: swap src to change this pen photo -->
+          <img src="B6.webp" alt="Joy foiled pen">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">Joy</div>
-          <div class="pcard-desc">Bright red and yellow combination. Energetic and attention-grabbing. Perfect for FMCG brands, events &amp; high-volume giveaways.</div>
-          <span class="pcard-tag">Foiled &amp; Stamped</span>
+          <span class="pcard-tag">FOILED | STAMPED</span>
         </div>
       </div>
+
     </div>
 
-    <!-- STANDS & FOLDERS (hidden by default) -->
+    <!-- ═══ TAB 3: PEN STANDS & FOLDERS ═══ -->
     <div id="tab-stands" class="product-grid" style="display:none; grid-template-columns: repeat(3,1fr);">
+
       <div class="pcard fade-up stagger-1">
-        <div class="pcard-img" style="height:200px;">
-          <!-- PLACEHOLDER: Replace with actual pen stand image (blue/yellow) -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-            <span>Pen Stand – Blue/Yellow</span>
-          </div>
+        <div class="pcard-img">
+          <!-- IMAGE PA1: swap src to change this stand photo -->
+          <img src="PA1.webp" alt="Counter Display Stand">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">Counter Display Stand</div>
-          <div class="pcard-desc">Dual-colour counter display stand with branded base panel. Holds multiple pens in organised rows for retail or reception use.</div>
           <span class="pcard-tag">Display Stand</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-2">
-        <div class="pcard-img" style="height:200px;">
-          <!-- PLACEHOLDER: Replace with actual pastel pen stand image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-            <span>Pen Stand – Pastel</span>
-          </div>
+        <div class="pcard-img">
+          <!-- IMAGE PA2: swap src to change this stand photo -->
+          <img src="PA2.webp" alt="Pastel Multi-Colour Stand">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">Pastel Multi-Colour Stand</div>
-          <div class="pcard-desc">Large capacity pastel display stand. Ideal for stationery brands, banks &amp; hotels wanting an elegant countertop presence.</div>
           <span class="pcard-tag">Display Stand</span>
         </div>
       </div>
+
       <div class="pcard fade-up stagger-3">
-        <div class="pcard-img" style="height:200px;">
-          <!-- PLACEHOLDER: Replace with actual branded folder/gift set image -->
-          <div class="pcard-img-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-            <span>Branded Gift Folder</span>
-          </div>
+        <div class="pcard-img">
+          <!-- IMAGE PA3: swap src to change this stand photo -->
+          <img src="PA3.webp" alt="Branded Gift Folder Set">
         </div>
         <div class="pcard-body">
           <div class="pcard-name">Branded Gift Folder Set</div>
-          <div class="pcard-desc">Premium folder with multi-pen gift set. Custom logo &amp; brand detail inside and out. Perfect for corporate gifting &amp; welcome kits.</div>
           <span class="pcard-tag">Gift Set</span>
         </div>
       </div>
+
+      <!-- PA4, PA5, PA6 are available — add more cards here if needed -->
+
     </div>
 
-    <div class="moq-badge fade-up">
+    <!-- MOQ badge shown only for Inside-Body & Foiled tabs — hidden for Stands -->
+    <div class="moq-badge fade-up" id="moq-badge">
       <span>Minimum Order Quantity:</span>
       <span class="pill" style="font-size:17px;padding:12px 28px;">MOQ — 1000 Units</span>
     </div>
+
   </div>
 </section>
-
-<!-- ===== INNOVATION / TECHNOLOGY ===== -->
-<section id="innovation">
-  <div class="innovation-inner">
-    <div class="innovation-header fade-up">
-      <div class="sec-label">Our Unique Branding Technology</div>
-      <h2 class="sec-title" style="color:#fff;">How Your Brand Gets Sealed <em style="color:var(--gold-light);">Inside Every Pen</em></h2>
-      <p class="sec-sub" style="color:rgba(255,255,255,0.80);margin-top:16px;margin:16px auto 0;">A proprietary 4-step process that makes your branding indestructible. No sticker, no sleeve — sealed for life.</p>
-    </div>
-
-    <div class="tech-steps fade-up">
-      <div class="tech-step">
-        <div class="tech-step-num">01</div>
-        <div class="tech-step-icon">🖨️</div>
-        <h3>360° Photo Print</h3>
-        <p>A cylindrical plastic tube is wrapped with a 360° hi-definition photo-printed sheet featuring your brand name, logo, tagline, address and more.</p>
-      </div>
-      <div class="tech-step">
-        <div class="tech-step-num">02</div>
-        <div class="tech-step-icon">🔭</div>
-        <h3>Lens Magnification</h3>
-        <p>The branded cylinder is inserted into the transparent pen body. The clear barrel acts as a precision lens, magnifying your branding beautifully.</p>
-      </div>
-      <div class="tech-step">
-        <div class="tech-step-num">03</div>
-        <div class="tech-step-icon">🔒</div>
-        <h3>Tamper-Proof Seal</h3>
-        <p>Your branding is permanently sealed inside the pen body with a tamper-proof stopper — it can never be removed, peeled or scratched.</p>
-      </div>
-      <div class="tech-step">
-        <div class="tech-step-num">04</div>
-        <div class="tech-step-icon">✨</div>
-        <h3>Mini-Billboard Ready</h3>
-        <p>Your indestructible, fade-proof, scratch-proof branding mini-billboard is complete and ready to represent your brand in every hand it reaches.</p>
-      </div>
-    </div>
-
-    <div class="features-grid fade-up">
-      <div class="feat-card">
-        <div class="feat-card-top">
-          <div class="feat-dot"></div>
-          <h4>Versatile Pen Styles</h4>
-        </div>
-        <p>Choose from a wide selection of pen mechanisms — including sleek capped pens and convenient click pens — to perfectly match your brand personality.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-card-top">
-          <div class="feat-dot"></div>
-          <h4>Exact Brand Colour Matching</h4>
-        </div>
-        <p>Pen components are customised to match the exact colours of your logo, ensuring 100% compliance with your brand guidelines across every unit.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-card-top">
-          <div class="feat-dot"></div>
-          <h4>Precision Film Printing</h4>
-        </div>
-        <p>The internal branding cylinder uses high-definition film printing to ensure your brand colours and logo are perfectly replicated with zero distortion.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-card-top">
-          <div class="feat-dot"></div>
-          <h4>High-Resolution Photo Integration</h4>
-        </div>
-        <p>Go beyond simple logos. Our film printing technology allows you to place vibrant, high-res photographs directly onto the branding cylinder.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-card-top">
-          <div class="feat-dot"></div>
-          <h4>Special ULV Ink — German Tech</h4>
-        </div>
-        <p>Superior quality ink ensures smooth &amp; long-lasting writing — average of 50–60 full-scape pages (800–1000 metres). Writes first every time.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-card-top">
-          <div class="feat-dot"></div>
-          <h4>Professional Expertise</h4>
-        </div>
-        <p>Quality pen manufacturers with over 30 years of global experience, exporting to Europe, the Middle East, Japan and many other countries.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== ABOUT ===== -->
 <section id="about">
   <div class="about-inner">
@@ -1119,30 +1004,53 @@ footer img { height: 40px; opacity: 0.8; }
       <div class="sec-label">Our Clients Are Our Branding</div>
       <h2 class="sec-title">Trusted by <em>India's Top Brands</em></h2>
     </div>
-    <div class="clients-logos fade-up">
-      <div class="client-logo"><span>RAMRAJ COTTON</span></div>
-      <div class="client-logo"><span>Lenovo</span></div>
-      <div class="client-logo"><span>Le Méridien</span></div>
-      <div class="client-logo"><span>Modi World School</span></div>
-      <div class="client-logo"><span>Chettinad Cement</span></div>
-      <div class="client-logo"><span>Jensons</span></div>
-      <div class="client-logo"><span>GB Public School</span></div>
-      <div class="client-logo"><span>Courtyard Marriott</span></div>
-      <div class="client-logo"><span>Aquatek</span></div>
-      <div class="client-logo"><span>Viveagham</span></div>
-      <div class="client-logo"><span>Redbridge International Academy</span></div>
-      <div class="client-logo"><span>Parvathy Hospitals</span></div>
-      <div class="client-logo"><span>AMCAP Capacitors</span></div>
-      <div class="client-logo"><span>Alaya Cotton</span></div>
-      <div class="client-logo"><span>Gateway International Schools</span></div>
-      <div class="client-logo"><span>Hablis</span></div>
-      <div class="client-logo"><span>Apollo Healthcare Academy</span></div>
-      <div class="client-logo"><span>Sowbaghya</span></div>
-      <div class="client-logo"><span>Aarux</span></div>
-      <div class="client-logo"><span>Trillest Health Care</span></div>
-      <div class="client-logo"><span>ThoughtFlows</span></div>
-      <div class="client-logo"><span>RKG Agmark Ghee</span></div>
-      <div class="client-logo" style="background:linear-gradient(135deg,#FFF1F0,#FFE8E8);border-color:var(--red);"><span style="color:var(--red);font-weight:800;">Your Brand — Next?</span></div>
+        <div class="clients-logos fade-up">
+      <!-- CLIENT LOGO 1: swap src="Logo_1.webp" to change -->
+      <div class="client-logo"><img src="Logo_1.webp" alt="Client Logo 1"></div>
+      <!-- CLIENT LOGO 2 -->
+      <div class="client-logo"><img src="Logo_2.webp" alt="Client Logo 2"></div>
+      <!-- CLIENT LOGO 3 -->
+      <div class="client-logo"><img src="Logo_3.webp" alt="Client Logo 3"></div>
+      <!-- CLIENT LOGO 4 -->
+      <div class="client-logo"><img src="Logo_4.webp" alt="Client Logo 4"></div>
+      <!-- CLIENT LOGO 5 -->
+      <div class="client-logo"><img src="Logo_5.webp" alt="Client Logo 5"></div>
+      <!-- CLIENT LOGO 6 -->
+      <div class="client-logo"><img src="Logo_6.webp" alt="Client Logo 6"></div>
+      <!-- CLIENT LOGO 7 -->
+      <div class="client-logo"><img src="Logo_7.webp" alt="Client Logo 7"></div>
+      <!-- CLIENT LOGO 8 -->
+      <div class="client-logo"><img src="Logo_8.webp" alt="Client Logo 8"></div>
+      <!-- CLIENT LOGO 9 -->
+      <div class="client-logo"><img src="Logo_9.webp" alt="Client Logo 9"></div>
+      <!-- CLIENT LOGO 10 -->
+      <div class="client-logo"><img src="Logo_10.webp" alt="Client Logo 10"></div>
+      <!-- CLIENT LOGO 11 -->
+      <div class="client-logo"><img src="Logo_11.webp" alt="Client Logo 11"></div>
+      <!-- CLIENT LOGO 12 -->
+      <div class="client-logo"><img src="Logo_12.webp" alt="Client Logo 12"></div>
+      <!-- CLIENT LOGO 13 -->
+      <div class="client-logo"><img src="Logo_13.webp" alt="Client Logo 13"></div>
+      <!-- CLIENT LOGO 14 -->
+      <div class="client-logo"><img src="Logo_14.webp" alt="Client Logo 14"></div>
+      <!-- CLIENT LOGO 15 -->
+      <div class="client-logo"><img src="Logo_15.webp" alt="Client Logo 15"></div>
+      <!-- CLIENT LOGO 16 -->
+      <div class="client-logo"><img src="Logo_16.webp" alt="Client Logo 16"></div>
+      <!-- CLIENT LOGO 17 -->
+      <div class="client-logo"><img src="Logo_17.webp" alt="Client Logo 17"></div>
+      <!-- CLIENT LOGO 18 -->
+      <div class="client-logo"><img src="Logo_18.webp" alt="Client Logo 18"></div>
+      <!-- CLIENT LOGO 19 -->
+      <div class="client-logo"><img src="Logo_19.webp" alt="Client Logo 19"></div>
+      <!-- CLIENT LOGO 20 -->
+      <div class="client-logo"><img src="Logo_20.webp" alt="Client Logo 20"></div>
+      <!-- CLIENT LOGO 21 -->
+      <div class="client-logo"><img src="Logo_21.webp" alt="Client Logo 21"></div>
+      <!-- CLIENT LOGO 22 -->
+      <div class="client-logo"><img src="Logo_22.webp" alt="Client Logo 22"></div>
+      <!-- CLIENT LOGO 23 -->
+      <div class="client-logo"><img src="Logo_23.webp" alt="Client Logo 23"></div>
     </div>
   </div>
 </section>
@@ -1367,12 +1275,22 @@ sections.forEach(s => scrollSpy.observe(s));
 // ===== PRODUCT TABS =====
 function switchTab(tab) {
   ['inside','foiled','stands'].forEach(t => {
-    document.getElementById('tab-' + t).style.display = (t === tab) ? 'grid' : 'none';
+    const el = document.getElementById('tab-' + t);
+    if (t === tab) {
+      el.style.display = 'grid';
+      // stands tab: 3-col override
+      el.style.gridTemplateColumns = (t === 'stands') ? 'repeat(3,1fr)' : '';
+    } else {
+      el.style.display = 'none';
+    }
   });
   document.querySelectorAll('.ptab').forEach((btn, i) => {
     const tabNames = ['inside','foiled','stands'];
     btn.classList.toggle('active', tabNames[i] === tab);
   });
+  // hide MOQ badge on Stands tab
+  const moq = document.getElementById('moq-badge');
+  if (moq) moq.style.display = (tab === 'stands') ? 'none' : 'flex';
 }
 
 // ===== MODAL =====
