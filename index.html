@@ -1,8 +1,1417 @@
-<html>
-  <head>
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ridleys MaxView – Pens That Power Brands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== ROOT VARIABLES ===== */
+:root {
+  --red: #CC1111;
+  --red-dark: #9B0D0D;
+  --red-light: #E31C1C;
+  --gold: #D4A017;
+  --gold-light: #F5C842;
+  --black: #0A0A0A;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+  --offwhite: #F9F7F4;
+  --gray: #6B7280;
+  --light-gray: #F3F4F6;
+  --maroon: #6B1212;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; color: var(--dark); overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== HEADER ===== */
+#header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: #FFFFFF;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.10);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 72px;
+}
+.header-logo img {
+  height: 52px; width: auto;
+}
+.header-nav { display: flex; align-items: center; gap: 36px; }
+.header-nav a {
+  font-size: 14px; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--dark); text-transform: uppercase;
+  position: relative; padding-bottom: 4px;
+  transition: color 0.2s;
+}
+.header-nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--red); transform: scaleX(0); transition: transform 0.2s;
+}
+.header-nav a:hover { color: var(--red); }
+.header-nav a:hover::after { transform: scaleX(1); }
+.header-cta {
+  background: var(--red); color: #fff;
+  padding: 11px 26px; border-radius: 4px;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.header-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+/* Mobile Menu Toggle */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 26px; height: 2px; background: var(--dark); transition: all 0.3s; }
+
+/* ===== HERO SECTION ===== */
+#hero {
+  min-height: 100vh; padding-top: 72px;
+  background: linear-gradient(135deg, #FAFAFA 0%, #F5F0EB 100%);
+  display: flex; align-items: center;
+}
+.hero-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 48px;
+  padding: 60px 48px;
+}
+.hero-video-wrap {
+  position: relative; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+}
+.hero-video-wrap video {
+  width: 100%; display: block; border-radius: 16px;
+}
+.hero-badge {
+  position: absolute; top: 20px; left: 20px;
+  background: var(--red); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 6px 14px; border-radius: 20px;
+}
+.hero-right { display: flex; flex-direction: column; gap: 28px; }
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--red);
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 2px; background: var(--red);
+}
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1.12; color: var(--black);
+  font-weight: 900;
+}
+.hero-headline em {
+  font-style: normal; color: var(--red);
+}
+.hero-sub {
+  font-size: 17px; color: var(--gray); line-height: 1.65;
+  max-width: 460px;
+}
+.hero-pills { display: flex; gap: 12px; flex-wrap: wrap; }
+.pill {
+  border: 2px solid var(--red); color: var(--red);
+  padding: 7px 18px; border-radius: 100px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--red); color: #fff;
+  padding: 14px 32px; border-radius: 6px;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; cursor: pointer; border: none;
+  box-shadow: 0 8px 24px rgba(204,17,17,0.30);
+  transition: all 0.2s; display: inline-block;
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(204,17,17,0.40); }
+.btn-whatsapp {
+  background: #25D366; color: #fff;
+  padding: 14px 28px; border-radius: 6px;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.03em;
+  cursor: pointer; border: none;
+  display: flex; align-items: center; gap: 9px;
+  transition: all 0.2s;
+}
+.btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
+.hero-trust {
+  display: flex; align-items: center; gap: 16px;
+  padding-top: 8px; border-top: 1px solid #E5E7EB;
+}
+.hero-trust-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 900; color: var(--red); line-height: 1;
+}
+.hero-trust-txt {
+  font-size: 13px; color: var(--gray); line-height: 1.5; max-width: 200px;
+}
+
+/* ===== SECTION HEADINGS ===== */
+.sec-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 12px;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 46px);
+  font-weight: 900; line-height: 1.15; color: var(--black);
+}
+.sec-title em { font-style: normal; color: var(--red); }
+.sec-sub {
+  font-size: 17px; color: var(--gray); line-height: 1.65;
+  max-width: 640px; margin: 0 auto;
+}
+.text-center { text-align: center; }
+.sec-title.text-center { margin: 0 auto; }
+
+/* ===== UNIQUE SECTION ===== */
+#unique { background: #fff; padding: 100px 48px; }
+.unique-inner { max-width: 1200px; margin: 0 auto; }
+.unique-header { text-align: center; margin-bottom: 72px; }
+.unique-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+}
+.ucard {
+  padding: 36px 28px; border-radius: 12px;
+  border: 1.5px solid #F0F0F0;
+  transition: all 0.25s; position: relative; overflow: hidden;
+  background: #fff;
+}
+.ucard::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--red); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.ucard:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.10); transform: translateY(-4px); border-color: transparent; }
+.ucard:hover::before { transform: scaleX(1); }
+.ucard-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: linear-gradient(135deg, #FFF1F0, #FFDADA);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 20px;
+}
+.ucard h3 {
+  font-size: 17px; font-weight: 700; color: var(--black);
+  margin-bottom: 10px;
+}
+.ucard p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+
+/* ===== PRODUCTS SECTION ===== */
+#products {
+  background: #fff;
+  padding: 100px 48px;
+  /* Red border BG placement */
+  position: relative;
+}
+#products::before {
+  content: '';
+  position: absolute; top: 40px; left: 40px; right: 40px; bottom: 40px;
+  border: 3px solid var(--red); border-radius: 24px; pointer-events: none;
+  z-index: 0;
+}
+.products-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.products-header { text-align: center; margin-bottom: 60px; }
+.product-tabs {
+  display: flex; justify-content: center; gap: 12px; margin-bottom: 52px; flex-wrap: wrap;
+}
+.ptab {
+  padding: 10px 28px; border-radius: 100px; cursor: pointer;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; border: 2px solid #E5E7EB;
+  background: #fff; color: var(--gray);
+  transition: all 0.2s;
+}
+.ptab.active, .ptab:hover {
+  background: var(--red); color: #fff; border-color: var(--red);
+}
+.product-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.pcard {
+  border-radius: 14px; overflow: hidden;
+  border: 1.5px solid #F0F0F0; background: #fff;
+  transition: all 0.25s; cursor: pointer;
+}
+.pcard:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.12); transform: translateY(-4px); }
+.pcard-img {
+  width: 100%; height: 180px;
+  background: linear-gradient(135deg, #F5F5F5 0%, #EBEBEB 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.pcard-img img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.pcard-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #F8F0F0 0%, #EDE0E0 100%);
+}
+.pcard-img-placeholder svg { opacity: 0.3; }
+.pcard-img-placeholder span {
+  font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.pcard-body { padding: 18px 16px; }
+.pcard-name {
+  font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 6px;
+}
+.pcard-desc { font-size: 13px; color: var(--gray); line-height: 1.55; }
+.pcard-tag {
+  display: inline-block; margin-top: 10px;
+  background: #FFF1F0; color: var(--red);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 4px;
+}
+.moq-badge {
+  text-align: center; margin-top: 48px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.moq-badge .pill {
+  font-size: 15px; padding: 12px 32px;
+  background: #FFF1F0;
+}
+
+/* ===== INNOVATION / TECHNOLOGY SECTION ===== */
+#innovation {
+  /* Red filled + gold/yellow combo */
+  background: linear-gradient(135deg, var(--red) 0%, #8B0000 40%, #C8800A 100%);
+  padding: 100px 48px;
+  position: relative; overflow: hidden;
+}
+#innovation::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(245,200,66,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+#innovation::after {
+  content: '';
+  position: absolute; bottom: -60px; left: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(255,220,80,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.innovation-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.innovation-header { text-align: center; margin-bottom: 72px; }
+.innovation-header .sec-label { color: var(--gold-light); }
+.innovation-header .sec-title { color: #fff; }
+.innovation-header .sec-sub { color: rgba(255,255,255,0.80); margin-top: 16px; }
+.tech-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  background: rgba(255,255,255,0.06);
+  border-radius: 20px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.tech-step {
+  padding: 40px 28px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+}
+.tech-step:last-child { border-right: none; }
+.tech-step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px; font-weight: 900;
+  color: rgba(255,255,255,0.08); line-height: 1;
+  position: absolute; top: 16px; right: 16px;
+}
+.tech-step-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; font-size: 28px;
+  box-shadow: 0 8px 24px rgba(212,160,23,0.4);
+}
+.tech-step h3 {
+  font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.4;
+}
+.tech-step p { font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.6; }
+
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px;
+}
+.feat-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px; padding: 28px 24px;
+  backdrop-filter: blur(4px);
+  transition: all 0.25s;
+}
+.feat-card:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-3px);
+}
+.feat-card-top {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+}
+.feat-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold-light); flex-shrink: 0;
+}
+.feat-card h4 { font-size: 16px; font-weight: 700; color: var(--gold-light); }
+.feat-card p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.65; }
+
+/* ===== ABOUT SECTION ===== */
+#about {
+  background: #FFFFFF;
+  padding: 100px 48px;
+}
+.about-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-img-placeholder {
+  width: 100%; aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #F8F0F0 0%, #EDE0E0 100%);
+  border-radius: 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; border: 2px dashed #DFCECE;
+  position: relative; overflow: hidden;
+}
+.about-img-placeholder::after {
+  content: 'RIDLEYS | TEAM / FACTORY IMAGE';
+  font-size: 12px; font-weight: 700; color: #BBB; letter-spacing: 0.1em; text-transform: uppercase;
+  position: absolute; bottom: 20px;
+}
+.placeholder-icon { font-size: 56px; opacity: 0.2; }
+.about-right { display: flex; flex-direction: column; gap: 24px; }
+.about-right .sec-sub { margin: 0; text-align: left; max-width: 100%; }
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 12px;
+}
+.stat-item { text-align: center; padding: 20px 10px; border-radius: 10px; background: var(--offwhite); }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px; font-weight: 900; color: var(--red); line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-lbl { font-size: 12px; color: var(--gray); font-weight: 600; letter-spacing: 0.04em; }
+
+/* ===== CLIENTS SECTION ===== */
+#clients {
+  background: var(--offwhite); padding: 80px 48px;
+}
+.clients-inner { max-width: 1200px; margin: 0 auto; }
+.clients-header { text-align: center; margin-bottom: 52px; }
+.clients-logos {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+}
+.client-logo {
+  background: #fff; border-radius: 10px;
+  border: 1.5px solid #EEE;
+  padding: 18px 16px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 72px;
+  transition: all 0.2s;
+}
+.client-logo:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); border-color: var(--red); }
+.client-logo span {
+  font-size: 13px; font-weight: 700; color: var(--dark); text-align: center; line-height: 1.4;
+}
+
+/* ===== HOW TO ORDER ===== */
+#order { background: #fff; padding: 100px 48px; }
+.order-inner { max-width: 1100px; margin: 0 auto; }
+.order-header { text-align: center; margin-bottom: 64px; }
+.order-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  position: relative;
+}
+.order-steps::before {
+  content: '';
+  position: absolute; top: 36px; left: calc(16.67% + 12px); right: calc(16.67% + 12px);
+  height: 2px; background: linear-gradient(90deg, var(--red), var(--gold));
+  z-index: 0;
+}
+.ostep {
+  text-align: center; position: relative; z-index: 1;
+}
+.ostep-num {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), #FF4444);
+  color: #fff; font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  box-shadow: 0 8px 24px rgba(204,17,17,0.30);
+  border: 4px solid #fff;
+}
+.ostep h3 {
+  font-size: 18px; font-weight: 700; color: var(--black); margin-bottom: 12px;
+}
+.ostep p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+.ostep-detail {
+  margin-top: 14px; text-align: left;
+  background: var(--offwhite); border-radius: 10px;
+  padding: 16px; font-size: 13px; color: var(--gray); line-height: 1.7;
+}
+.ostep-detail strong { color: var(--red); display: block; margin-bottom: 4px; }
+
+/* ===== FORM / CONTACT SECTION ===== */
+#contact {
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #2A2A2A 100%);
+  padding: 100px 48px;
+  position: relative; overflow: hidden;
+}
+#contact::before {
+  content: '';
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px);
+  pointer-events: none;
+}
+.contact-inner {
+  max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
+}
+.contact-left { color: #fff; }
+.contact-left .sec-label { color: var(--gold-light); }
+.contact-left .sec-title { color: #fff; margin-bottom: 20px; }
+.contact-left p { color: rgba(255,255,255,0.70); font-size: 16px; line-height: 1.7; margin-bottom: 36px; }
+.contact-info { display: flex; flex-direction: column; gap: 16px; }
+.cinfo-item {
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.cinfo-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.cinfo-text { font-size: 14px; color: rgba(255,255,255,0.80); line-height: 1.6; }
+.cinfo-text a { color: var(--gold-light); }
+.contact-form {
+  background: #fff; border-radius: 16px; padding: 44px 40px;
+}
+.form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 700; color: var(--black);
+  margin-bottom: 28px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+.form-group label {
+  font-size: 13px; font-weight: 600; color: var(--dark); letter-spacing: 0.03em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 16px; border-radius: 8px;
+  border: 1.5px solid #E5E7EB; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; color: var(--dark);
+  transition: border-color 0.2s; outline: none; width: 100%;
+  background: #FAFAFA;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--red); background: #fff;
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit {
+  width: 100%; padding: 15px; background: var(--red); color: #fff;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; border: none; border-radius: 8px;
+  cursor: pointer; transition: all 0.2s;
+  margin-top: 8px;
+}
+.form-submit:hover { background: var(--red-dark); transform: translateY(-1px); }
+.form-note { font-size: 12px; color: #999; text-align: center; margin-top: 10px; }
+
+/* ===== FOILED SECTION ===== */
+#foiled { background: var(--offwhite); padding: 80px 48px; }
+.foiled-inner { max-width: 1200px; margin: 0 auto; }
+.foiled-header { text-align: center; margin-bottom: 52px; }
+.foiled-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.foiled-card {
+  background: #fff; border-radius: 14px; overflow: hidden;
+  border: 1.5px solid #F0F0F0;
+  transition: all 0.25s;
+}
+.foiled-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.10); transform: translateY(-3px); }
+.foiled-img {
+  width: 100%; height: 160px;
+  background: linear-gradient(135deg, #F5F5F5, #E8E8E8);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; border-bottom: 1px solid #F0F0F0;
+}
+.foiled-img span { font-size: 11px; font-weight: 600; color: #BBB; letter-spacing: 0.08em; text-transform: uppercase; }
+.foiled-body { padding: 16px; }
+.foiled-name { font-size: 15px; font-weight: 700; color: var(--black); }
+
+/* ===== POPUP MODAL ===== */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: #fff; border-radius: 16px; padding: 48px 44px;
+  max-width: 540px; width: 90%; position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.30);
+  animation: modalIn 0.3s ease;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(-20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; font-size: 24px; cursor: pointer; color: #999;
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; transition: background 0.2s;
+}
+.modal-close:hover { background: var(--light-gray); color: var(--dark); }
+.modal-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+.modal-sub { font-size: 14px; color: var(--gray); margin-bottom: 28px; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #0A0A0A; color: rgba(255,255,255,0.55);
+  padding: 40px 48px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+footer img { height: 40px; opacity: 0.8; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold-light); }
+.footer-copy { font-size: 13px; }
+
+/* ===== SCROLL ANIMATIONS ===== */
+.fade-up {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.stagger-1 { transition-delay: 0.05s; }
+.stagger-2 { transition-delay: 0.15s; }
+.stagger-3 { transition-delay: 0.25s; }
+.stagger-4 { transition-delay: 0.35s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-video-wrap { max-width: 600px; margin: 0 auto; }
+  .hero-right { text-align: center; align-items: center; }
+  .hero-sub { margin: 0 auto; }
+  .about-inner { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .tech-steps { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .unique-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  #header { padding: 0 24px; }
+  .header-nav { display: none; }
+  .header-cta { display: none; }
+  .hamburger { display: flex; }
+  #hero, #unique, #products, #innovation, #about, #clients, #order, #contact, #foiled { padding: 80px 24px; }
+  #products::before { top: 20px; left: 20px; right: 20px; bottom: 20px; }
+  .tech-steps { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .unique-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .clients-logos { grid-template-columns: repeat(3, 1fr); }
+  .order-steps { grid-template-columns: 1fr; }
+  .order-steps::before { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .foiled-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="header">
+  <a href="#hero" class="header-logo">
+    <img src="Logo_jpg.jpeg" alt="Ridleys Logo">
+  </a>
+  
+  <a href="#contact" class="header-cta" onclick="openModal()">Request Quote</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<section id="hero" style="margin-top:72px;width:100%;overflow:hidden;line-height:0;padding:0;">
+  <video autoplay muted loop playsinline
+    style="width:100%;height:calc(100vh - 72px);object-fit:cover;display:block;">
+    <source src="VV1.webm" type="video/webm">
+    <source src="pen_video.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- ===== WHAT'S UNIQUE ===== -->
+<section id="unique">
+  <div class="unique-inner">
+    <div class="unique-header fade-up">
+      <div class="sec-label">Why Choose Ridleys</div>
+      <h2 class="sec-title">What's Unique about <em>Ridleys Custom</em><br>Promotional Pens?</h2>
+      <p class="sec-sub text-center" style="margin:16px auto 0;">Nine reasons why India's top brands choose Ridleys for their promotional pen branding.</p>
+    </div>
+    <div class="unique-grid">
+      <div class="ucard fade-up stagger-1">
+        <div class="ucard-icon">🔬</div>
+        <h3>Unique Inside-Body Technology</h3>
+        <p>First-of-its-kind inside body printing. Your branding can never fade or be scratched out — sealed permanently inside the transparent barrel.</p>
+      </div>
+      <div class="ucard fade-up stagger-2">
+        <div class="ucard-icon">🎨</div>
+        <h3>Precision Colour Printing</h3>
+        <p>High-definition film printing ensures your brand colours and logo are perfectly replicated with zero distortion on every single unit.</p>
+      </div>
+      <div class="ucard fade-up stagger-3">
+        <div class="ucard-icon">✅</div>
+        <h3>Exact Brand Colour Match</h3>
+        <p>Pen components are customised to match the exact Pantone or CMYK colours of your brand guidelines — 100% compliance guaranteed.</p>
+      </div>
+      <div class="ucard fade-up stagger-1">
+        <div class="ucard-icon">📸</div>
+        <h3>High-Resolution Photo Printing</h3>
+        <p>Go beyond logos. Place vibrant, high-resolution photographs directly on the branding cylinder — your product, team, or campaign imagery.</p>
+      </div>
+      <div class="ucard fade-up stagger-2">
+        <div class="ucard-icon">🔍</div>
+        <h3>Sharp &amp; Magnified Effect</h3>
+        <p>The specially designed transparent body acts as a lens, magnifying your branding to create a crisp, sharp, eye-catching visual impact.</p>
+      </div>
+      <div class="ucard fade-up stagger-3">
+        <div class="ucard-icon">🔒</div>
+        <h3>Tamper-Proof Sealing</h3>
+        <p>The branded photo cylinder inside is permanently sealed with a tamper-proof stopper. Your branding is indestructible for the life of the pen.</p>
+      </div>
+      <div class="ucard fade-up stagger-1">
+        <div class="ucard-icon">🇩🇪</div>
+        <h3>Special ULV Ink — German Technology</h3>
+        <p>Superior quality ink ensures smooth &amp; long-lasting writing — an average of 50–60 full-scape pages (800–1000 metres of continuous writing).</p>
+      </div>
+      <div class="ucard fade-up stagger-2">
+        <div class="ucard-icon">🏆</div>
+        <h3>Superior Quality Pens</h3>
+        <p>Our pens have been exported to Europe, the Middle East, Japan, and many other countries for over 25 years — international quality standards.</p>
+      </div>
+      <div class="ucard fade-up stagger-3">
+        <div class="ucard-icon">💰</div>
+        <h3>Budget Friendly</h3>
+        <p>Premium inside-body branding at a price that makes sense for bulk promotional orders. Low MOQ of just 1000 units. Maximum impact, minimum spend.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products">
+  <div class="products-inner">
+    <div class="products-header fade-up">
+      <div class="sec-label">Our Range</div>
+      <h2 class="sec-title">Promotional <em>Pens</em> Collection</h2>
+      <p class="sec-sub text-center" style="margin:14px auto 0;">Choose from our signature MaxView inside-body series or our classic foiled &amp; stamped range. MOQ 1000 units on all models.</p>
+    </div>
+
+    <div class="product-tabs">
+      <button class="ptab active" onclick="switchTab('inside')">MaxView Inside-Body Pens</button>
+      <button class="ptab" onclick="switchTab('foiled')">Foiled &amp; Stamped Pens</button>
+      <button class="ptab" onclick="switchTab('stands')">Pen Stands &amp; Folders</button>
+    </div>
+
+    <!-- INSIDE BODY PENS -->
+    <div id="tab-inside" class="product-grid">
+      <div class="pcard fade-up stagger-1">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual MaxView EMPO pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>MaxView EMPO</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">MaxView EMPO</div>
+          <div class="pcard-desc">Capped pen with vibrant transparent body. Full 360° inside-body branding with photo, logo, address &amp; image panel.</div>
+          <span class="pcard-tag">Inside Body • Tamper Proof</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-2">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual MaxView D-LITE pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>MaxView D-LITE</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">MaxView D-LITE</div>
+          <div class="pcard-desc">Elegant purple-toned pen with matching colour components. Sleek professional look ideal for corporate gifting.</div>
+          <span class="pcard-tag">Inside Body • Tamper Proof</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-3">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual MaxView XR pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>MaxView XR</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">MaxView XR</div>
+          <div class="pcard-desc">Pastel pink series with a slim ergonomic barrel. Ideal for healthcare, beauty &amp; lifestyle brands seeking a softer identity.</div>
+          <span class="pcard-tag">Inside Body • Tamper Proof</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-4">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual MaxView DURO CLICK pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>MaxView DURO CLICK</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">MaxView DURO CLICK</div>
+          <div class="pcard-desc">Click-action retractable pen in teal. Robust textured grip. Perfect for field sales teams &amp; frequent writers.</div>
+          <span class="pcard-tag">Click Pen • Tamper Proof</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-1">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual MaxView JOY pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>MaxView JOY</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">MaxView JOY</div>
+          <div class="pcard-desc">Teal and transparent combination. Minimalist branding zone with logo and web address. Great for retail brands.</div>
+          <span class="pcard-tag">Inside Body • Tamper Proof</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-2">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual MaxView JETFAST pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>MaxView JETFAST</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">MaxView JETFAST</div>
+          <div class="pcard-desc">Sky blue series with full branding panel. Suitable for education, banking &amp; finance companies wanting vibrant visibility.</div>
+          <span class="pcard-tag">Inside Body • Tamper Proof</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-3">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual MaxView YOYO pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>MaxView YOYO</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">MaxView YOYO</div>
+          <div class="pcard-desc">Green accented click pen with wide branding panel. Bold and energetic design suited to FMCG &amp; manufacturing brands.</div>
+          <span class="pcard-tag">Click Pen • Tamper Proof</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-4">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual MaxView N-JOY pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>MaxView N-JOY</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">MaxView N-JOY</div>
+          <div class="pcard-desc">Orange body with full branding panel. Warm, attention-grabbing colour. Ideal for events, hospitality &amp; promotions.</div>
+          <span class="pcard-tag">Inside Body • Tamper Proof</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOILED PENS (hidden by default) -->
+    <div id="tab-foiled" class="product-grid" style="display:none;">
+      <div class="pcard fade-up stagger-1">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual Arrow foiled pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Arrow</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Arrow</div>
+          <div class="pcard-desc">Classic capped pen in green with foil-stamped brand name. Timeless and professional for corporate distribution.</div>
+          <span class="pcard-tag">Foiled &amp; Stamped</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-2">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual Hi Grade foiled pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Hi Grade</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Hi Grade</div>
+          <div class="pcard-desc">Sleek gunmetal grey with gold foil stamping. A premium look at a promotional price. Perfect for luxury brands.</div>
+          <span class="pcard-tag">Foiled &amp; Stamped</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-3">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual Yesmate foiled pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Yesmate</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Yesmate</div>
+          <div class="pcard-desc">Dual-tone blue and green combo. High visibility branding strip. Great for schools, NGOs &amp; government organisations.</div>
+          <span class="pcard-tag">Foiled &amp; Stamped</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-4">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual Delite foiled pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Delite</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Delite</div>
+          <div class="pcard-desc">Royal blue body with contrasting white foil. Clean and striking. Ideal for hospitals, clinics &amp; pharmaceutical companies.</div>
+          <span class="pcard-tag">Foiled &amp; Stamped</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-1">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual N-Joy Golden pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>N-Joy Golden</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">N-Joy (Golden Colour)</div>
+          <div class="pcard-desc">Premium black &amp; gold combination. Rich metallic finish with stamped branding. The ultimate luxury promotional pen.</div>
+          <span class="pcard-tag">Gold Foil Stamped</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-2">
+        <div class="pcard-img">
+          <!-- PLACEHOLDER: Replace with actual Joy foiled pen image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Joy</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Joy</div>
+          <div class="pcard-desc">Bright red and yellow combination. Energetic and attention-grabbing. Perfect for FMCG brands, events &amp; high-volume giveaways.</div>
+          <span class="pcard-tag">Foiled &amp; Stamped</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STANDS & FOLDERS (hidden by default) -->
+    <div id="tab-stands" class="product-grid" style="display:none; grid-template-columns: repeat(3,1fr);">
+      <div class="pcard fade-up stagger-1">
+        <div class="pcard-img" style="height:200px;">
+          <!-- PLACEHOLDER: Replace with actual pen stand image (blue/yellow) -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+            <span>Pen Stand – Blue/Yellow</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Counter Display Stand</div>
+          <div class="pcard-desc">Dual-colour counter display stand with branded base panel. Holds multiple pens in organised rows for retail or reception use.</div>
+          <span class="pcard-tag">Display Stand</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-2">
+        <div class="pcard-img" style="height:200px;">
+          <!-- PLACEHOLDER: Replace with actual pastel pen stand image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+            <span>Pen Stand – Pastel</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Pastel Multi-Colour Stand</div>
+          <div class="pcard-desc">Large capacity pastel display stand. Ideal for stationery brands, banks &amp; hotels wanting an elegant countertop presence.</div>
+          <span class="pcard-tag">Display Stand</span>
+        </div>
+      </div>
+      <div class="pcard fade-up stagger-3">
+        <div class="pcard-img" style="height:200px;">
+          <!-- PLACEHOLDER: Replace with actual branded folder/gift set image -->
+          <div class="pcard-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CC1111" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            <span>Branded Gift Folder</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Branded Gift Folder Set</div>
+          <div class="pcard-desc">Premium folder with multi-pen gift set. Custom logo &amp; brand detail inside and out. Perfect for corporate gifting &amp; welcome kits.</div>
+          <span class="pcard-tag">Gift Set</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="moq-badge fade-up">
+      <span>Minimum Order Quantity:</span>
+      <span class="pill" style="font-size:17px;padding:12px 28px;">MOQ — 1000 Units</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INNOVATION / TECHNOLOGY ===== -->
+<section id="innovation">
+  <div class="innovation-inner">
+    <div class="innovation-header fade-up">
+      <div class="sec-label">Our Unique Branding Technology</div>
+      <h2 class="sec-title" style="color:#fff;">How Your Brand Gets Sealed <em style="color:var(--gold-light);">Inside Every Pen</em></h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,0.80);margin-top:16px;margin:16px auto 0;">A proprietary 4-step process that makes your branding indestructible. No sticker, no sleeve — sealed for life.</p>
+    </div>
+
+    <div class="tech-steps fade-up">
+      <div class="tech-step">
+        <div class="tech-step-num">01</div>
+        <div class="tech-step-icon">🖨️</div>
+        <h3>360° Photo Print</h3>
+        <p>A cylindrical plastic tube is wrapped with a 360° hi-definition photo-printed sheet featuring your brand name, logo, tagline, address and more.</p>
+      </div>
+      <div class="tech-step">
+        <div class="tech-step-num">02</div>
+        <div class="tech-step-icon">🔭</div>
+        <h3>Lens Magnification</h3>
+        <p>The branded cylinder is inserted into the transparent pen body. The clear barrel acts as a precision lens, magnifying your branding beautifully.</p>
+      </div>
+      <div class="tech-step">
+        <div class="tech-step-num">03</div>
+        <div class="tech-step-icon">🔒</div>
+        <h3>Tamper-Proof Seal</h3>
+        <p>Your branding is permanently sealed inside the pen body with a tamper-proof stopper — it can never be removed, peeled or scratched.</p>
+      </div>
+      <div class="tech-step">
+        <div class="tech-step-num">04</div>
+        <div class="tech-step-icon">✨</div>
+        <h3>Mini-Billboard Ready</h3>
+        <p>Your indestructible, fade-proof, scratch-proof branding mini-billboard is complete and ready to represent your brand in every hand it reaches.</p>
+      </div>
+    </div>
+
+    <div class="features-grid fade-up">
+      <div class="feat-card">
+        <div class="feat-card-top">
+          <div class="feat-dot"></div>
+          <h4>Versatile Pen Styles</h4>
+        </div>
+        <p>Choose from a wide selection of pen mechanisms — including sleek capped pens and convenient click pens — to perfectly match your brand personality.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-top">
+          <div class="feat-dot"></div>
+          <h4>Exact Brand Colour Matching</h4>
+        </div>
+        <p>Pen components are customised to match the exact colours of your logo, ensuring 100% compliance with your brand guidelines across every unit.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-top">
+          <div class="feat-dot"></div>
+          <h4>Precision Film Printing</h4>
+        </div>
+        <p>The internal branding cylinder uses high-definition film printing to ensure your brand colours and logo are perfectly replicated with zero distortion.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-top">
+          <div class="feat-dot"></div>
+          <h4>High-Resolution Photo Integration</h4>
+        </div>
+        <p>Go beyond simple logos. Our film printing technology allows you to place vibrant, high-res photographs directly onto the branding cylinder.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-top">
+          <div class="feat-dot"></div>
+          <h4>Special ULV Ink — German Tech</h4>
+        </div>
+        <p>Superior quality ink ensures smooth &amp; long-lasting writing — average of 50–60 full-scape pages (800–1000 metres). Writes first every time.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-top">
+          <div class="feat-dot"></div>
+          <h4>Professional Expertise</h4>
+        </div>
+        <p>Quality pen manufacturers with over 30 years of global experience, exporting to Europe, the Middle East, Japan and many other countries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-img-placeholder fade-up">
+      <!-- PLACEHOLDER: Replace with actual Ridleys factory / team image -->
+      <div class="placeholder-icon">🏭</div>
+    </div>
+    <div class="about-right fade-up stagger-1">
+      <div class="sec-label">About Ridleys</div>
+      <h2 class="sec-title" style="text-align:left;">Pens That <em>Power Brands</em> — Since 30+ Years</h2>
+      <p class="sec-sub" style="text-align:left;">
+        Ridleys is a quality pen manufacturer with over 30 years of global expertise. We pioneered India's first and only inside-body branding technology — the MaxView Series — transforming ordinary promotional pens into powerful, lasting brand ambassadors.
+      </p>
+      <p class="sec-sub" style="text-align:left;margin-top:12px;">
+        Our pens are exported to Europe, the Middle East, Japan, and many other countries for over 25 years. We work with some of India's most recognised brands — from Lenovo and Le Méridien to Apollo Healthcare and Marriott.
+      </p>
+      <p class="sec-sub" style="text-align:left;margin-top:12px;">
+        Unsure how your 360° design will look? Send us your logo today and we'll provide a free Digital 3D Mock-up — absolutely no obligation.
+      </p>
+      <div class="stats-row fade-up stagger-2">
+        <div class="stat-item">
+          <div class="stat-num">30+</div>
+          <div class="stat-lbl">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">25+</div>
+          <div class="stat-lbl">Export Countries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100+</div>
+          <div class="stat-lbl">Brands Served</div>
+        </div>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="#contact" class="btn-primary" onclick="openModal()">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLIENTS ===== -->
+<section id="clients">
+  <div class="clients-inner">
+    <div class="clients-header fade-up">
+      <div class="sec-label">Our Clients Are Our Branding</div>
+      <h2 class="sec-title">Trusted by <em>India's Top Brands</em></h2>
+    </div>
+    <div class="clients-logos fade-up">
+      <div class="client-logo"><span>RAMRAJ COTTON</span></div>
+      <div class="client-logo"><span>Lenovo</span></div>
+      <div class="client-logo"><span>Le Méridien</span></div>
+      <div class="client-logo"><span>Modi World School</span></div>
+      <div class="client-logo"><span>Chettinad Cement</span></div>
+      <div class="client-logo"><span>Jensons</span></div>
+      <div class="client-logo"><span>GB Public School</span></div>
+      <div class="client-logo"><span>Courtyard Marriott</span></div>
+      <div class="client-logo"><span>Aquatek</span></div>
+      <div class="client-logo"><span>Viveagham</span></div>
+      <div class="client-logo"><span>Redbridge International Academy</span></div>
+      <div class="client-logo"><span>Parvathy Hospitals</span></div>
+      <div class="client-logo"><span>AMCAP Capacitors</span></div>
+      <div class="client-logo"><span>Alaya Cotton</span></div>
+      <div class="client-logo"><span>Gateway International Schools</span></div>
+      <div class="client-logo"><span>Hablis</span></div>
+      <div class="client-logo"><span>Apollo Healthcare Academy</span></div>
+      <div class="client-logo"><span>Sowbaghya</span></div>
+      <div class="client-logo"><span>Aarux</span></div>
+      <div class="client-logo"><span>Trillest Health Care</span></div>
+      <div class="client-logo"><span>ThoughtFlows</span></div>
+      <div class="client-logo"><span>RKG Agmark Ghee</span></div>
+      <div class="client-logo" style="background:linear-gradient(135deg,#FFF1F0,#FFE8E8);border-color:var(--red);"><span style="color:var(--red);font-weight:800;">Your Brand — Next?</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW TO ORDER ===== -->
+<section id="order">
+  <div class="order-inner">
+    <div class="order-header fade-up">
+      <div class="sec-label">How to Order</div>
+      <h2 class="sec-title">Ordering Your <em>"Mini-Billboard"</em> is Easy as 1-2-3!</h2>
+      <p class="sec-sub text-center" style="margin:14px auto 0;">"Don't let your brand fade away. Seal it for life inside a Ridleys Pen."</p>
+    </div>
+    <div class="order-steps">
+      <div class="ostep fade-up stagger-1">
+        <div class="ostep-num">1</div>
+        <h3>Share Your Vision</h3>
+        <p>Send us your logo, high-resolution photographs in PDF (and CDR where available).</p>
+        <div class="ostep-detail">
+          <strong>📧 Action</strong>
+          Email to: <a href="mailto:mahendran@ridleys.in" style="color:var(--red);">mahendran@ridleys.in</a> or <a href="mailto:ridleys@ridleys.in" style="color:var(--red);">ridleys@ridleys.in</a>
+          <br><br>
+          <strong>🎨 Expert Support</strong>
+          Our team provides design for your selected model and colour to ensure your branding wraps perfectly around the barrel.
+        </div>
+      </div>
+      <div class="ostep fade-up stagger-2">
+        <div class="ostep-num">2</div>
+        <h3>Approve Your Virtual Proof</h3>
+        <p>We send you a digital mock-up showing exactly how your pen will look from every angle.</p>
+        <div class="ostep-detail">
+          <strong>🖥️ Precision Check</strong>
+          Review phone numbers, colours, all details and confirm. Production begins only after written approval.
+        </div>
+      </div>
+      <div class="ostep fade-up stagger-3">
+        <div class="ostep-num">3</div>
+        <h3>Fast-Track Production &amp; Delivery</h3>
+        <p>Once approved, we move into high-speed production with nationwide shipping.</p>
+        <div class="ostep-detail">
+          <strong>⏱️ Timeline</strong>
+          Ready from 3 days onwards depending on order quantity.
+          <br><br>
+          <strong>🚚 Delivery</strong>
+          Nationwide shipping. Transport charges extra as per delivery address.
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px;" class="fade-up">
+      <a href="#contact" class="btn-primary" onclick="openModal()" style="font-size:17px;padding:18px 44px;">Request Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT / QUOTE FORM ===== -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left fade-up">
+      <div class="sec-label">Get in Touch</div>
+      <h2 class="sec-title">Let's Power <em style="color:var(--gold-light);">Your Brand</em></h2>
+      <p>Ready to put your brand in thousands of hands? Send us your logo and we'll get back with a free digital 3D mock-up and quote within 24 hours.</p>
+      <div class="contact-info">
+        <div class="cinfo-item">
+          <div class="cinfo-icon">📞</div>
+          <div class="cinfo-text"><a href="tel:+919841691232">+91 98416 91232</a></div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-icon" style="background:#1A3A2A;border-color:#2A5A3A;">💬</div>
+          <div class="cinfo-text"><a href="https://wa.me/917550081232" target="_blank">+91 75500 81232 (WhatsApp)</a></div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-icon">✉️</div>
+          <div class="cinfo-text">
+            <a href="mailto:mahendran@ridleys.in">mahendran@ridleys.in</a><br>
+            <a href="mailto:ridleys@ridleys.in">ridleys@ridleys.in</a>
+          </div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-icon">🌐</div>
+          <div class="cinfo-text"><a href="https://www.ridleys.in" target="_blank">www.ridleys.in</a></div>
+        </div>
+      </div>
+      <div style="margin-top:40px;padding:24px;background:rgba(245,200,66,0.12);border:1px solid rgba(245,200,66,0.25);border-radius:12px;">
+        <div style="color:var(--gold-light);font-size:15px;font-weight:700;margin-bottom:8px;">🎁 Free Digital 3D Mock-up</div>
+        <div style="color:rgba(255,255,255,0.75);font-size:14px;line-height:1.65;">Unsure how your 360° design will look? Send us your logo today, and we'll provide a Digital 3D Mock-up — absolutely free, no obligation!</div>
+      </div>
+    </div>
+
+    <div class="contact-form fade-up stagger-1">
+      <div class="form-title">Request a Free Quote</div>
+      <form id="quoteForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label>Company Name *</label>
+            <input type="text" placeholder="Your company" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone / WhatsApp *</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" placeholder="you@company.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Pen Series Interested In</label>
+          <select>
+            <option value="">Select a series…</option>
+            <option>MaxView EMPO</option>
+            <option>MaxView D-LITE</option>
+            <option>MaxView XR</option>
+            <option>MaxView DURO CLICK</option>
+            <option>MaxView JOY</option>
+            <option>MaxView JETFAST</option>
+            <option>MaxView YOYO</option>
+            <option>MaxView N-JOY</option>
+            <option>Foiled &amp; Stamped Series</option>
+            <option>Pen Stands &amp; Folders</option>
+            <option>Not sure – need guidance</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Estimated Quantity</label>
+            <select>
+              <option>1,000 – 5,000 units</option>
+              <option>5,000 – 10,000 units</option>
+              <option>10,000 – 25,000 units</option>
+              <option>25,000+ units</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Delivery City / State</label>
+            <input type="text" placeholder="Chennai, Tamil Nadu">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Additional Requirements</label>
+          <textarea placeholder="Special colours, deadline, design notes, or any questions…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Request Quote →</button>
+        <p class="form-note">We'll respond within 24 hours with a free digital 3D mock-up &amp; quote.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <img src="Logo_jpg.jpeg" alt="Ridleys">
+  <div class="footer-links">
+    <a href="#hero">Home</a>
+    <a href="#unique">Technology</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#clients">Clients</a>
+    <a href="#order">How to Order</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Ridleys MaxView. All rights reserved. &nbsp;|&nbsp; <a href="https://www.ridleys.in" style="color:var(--gold-light);">www.ridleys.in</a></div>
+</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">Request a Free Quote</div>
+    <div class="modal-sub">Get your free Digital 3D Mock-up within 24 hours — no obligation.</div>
+    <form onsubmit="handleModalSubmit(event)">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" placeholder="Full name" required>
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp *</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+      </div>
+      <div class="form-group">
+        <label>Company Name</label>
+        <input type="text" placeholder="Your company">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label>Message / Requirements</label>
+        <textarea placeholder="Tell us your branding requirements, quantity, deadline…" style="min-height:80px;"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Request & Get Free Mock-up →</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// ===== SCROLL ANIMATIONS =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ===== HEADER ACTIVE =====
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.header-nav a');
+const scrollSpy = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.header-nav a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => scrollSpy.observe(s));
+
+// ===== PRODUCT TABS =====
+function switchTab(tab) {
+  ['inside','foiled','stands'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = (t === tab) ? 'grid' : 'none';
+  });
+  document.querySelectorAll('.ptab').forEach((btn, i) => {
+    const tabNames = ['inside','foiled','stands'];
+    btn.classList.toggle('active', tabNames[i] === tab);
+  });
+}
+
+// ===== MODAL =====
+function openModal() {
+  event && event.preventDefault();
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function handleSubmit(e) {
+  e.preventDefault();
+  alert('Thank you! Your quote request has been received. We\'ll get back to you within 24 hours with your free 3D mock-up.');
+}
+function handleModalSubmit(e) {
+  e.preventDefault();
+  closeModal();
+  alert('Thank you! Your quote request has been received. We\'ll get back to you within 24 hours with your free 3D mock-up.');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ===== HAMBURGER =====
+document.getElementById('hamburger').addEventListener('click', function() {
+  const nav = document.querySelector('.header-nav');
+  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+  nav.style.flexDirection = 'column';
+  nav.style.position = 'absolute';
+  nav.style.top = '72px';
+  nav.style.left = '0'; nav.style.right = '0';
+  nav.style.background = '#fff';
+  nav.style.padding = '20px 24px';
+  nav.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)';
+  nav.style.zIndex = '999';
+});
+</script>
+</body>
 </html>
